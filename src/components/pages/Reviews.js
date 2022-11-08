@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Reviews = () => {
+    const { user } = useContext(AuthContext);
+    
     return (
         <div className="reviews my-10">
             <div className="single-review mb-8">
                 <div className='flex'>
                     <div className="avatar">
                         <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                            <img src="https://placeimg.com/192/192/people" />
+                            <img src={user?.photoURL} alt="avatar" />
                         </div>
                     </div>
                     <div className='ml-6'>
@@ -30,7 +33,7 @@ const Reviews = () => {
                 <div className='flex'>
                     <div className="avatar">
                         <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                            <img src="https://placeimg.com/192/192/people" />
+                            <img src="https://placeimg.com/192/192/people" alt="avatar" />
                         </div>
                     </div>
                     <div className='ml-6'>
@@ -53,7 +56,7 @@ const Reviews = () => {
                 <div className='flex'>
                     <div className="avatar">
                         <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                            <img src="https://placeimg.com/192/192/people" />
+                            <img src="https://placeimg.com/192/192/people" alt="avatar" />
                         </div>
                     </div>
                     <div className='ml-6'>
