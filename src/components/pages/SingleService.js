@@ -8,12 +8,12 @@ const SingleService = () => {
 
     return (
         <div>
-            <div className="hero min-h-[600px]" style={{ backgroundImage: `url("https://placeimg.com/1000/800/arch")` }}>
+            <div className="hero min-h-[600px]" style={{ backgroundImage: `url("https://images.unsplash.com/photo-1579600161224-cac5a2971069?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80")` }}>
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero-content text-center text-neutral-content">
-                    <div className="max-w-md">
-                        <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-                        <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                    <div className="text-gray-200">
+                        <h1 className="mb-5 text-5xl font-bold">Mental Health Therapy</h1>
+                        <p className="mb-5 text-xl">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Adipisci quibusdam vel veritatis dicta deleniti nulla quos facilis accusantium explicabo, velit ducimus harum modi nostrum expedita a, maxime omnis voluptas iste dolore blanditiis cupiditate. Dolor, quam. Odit sequi quidem placeat cum! Consequuntur nisi eius autem, vel alias pariatur doloremque dignissimos officia nesciunt voluptas earum sequi facilis molestiae? Tenetur odio enim aliquid deleniti. Eveniet sit praesentium, consequuntur id iure animi ullam fugiat sed voluptate sunt ad quis! Modi facere aspernatur magnam porro nobis, voluptas incidunt, odit doloremque ab, sequi doloribus unde? Deleniti recusandae aliquam repudiandae numquam illum iure libero eaque labore! Est?</p>
                         <button className="btn btn-primary">Get Started</button>
                     </div>
                 </div>

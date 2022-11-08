@@ -5,7 +5,7 @@ const About = () => {
         <div className="hero bg-base-200 py-8">
             <div className="hero-content flex-col lg:flex-row-reverse justify-between">
                 <div>
-                    <img className='rounded rounded-full' src="https://lifespringcdn.s3.amazonaws.com/wp-content/uploads/2021/09/yahia-amin.jpg" alt='author' />
+                    <img className='rounded-xl' src="https://lifespringcdn.s3.amazonaws.com/wp-content/uploads/2021/09/yahia-amin.jpg" alt='author' />
                 </div>
                 <div className='w-1/2'>
                     <h1 className="text-5xl font-bold">Box Office News!</h1>

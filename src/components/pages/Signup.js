@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Signup = () => {
-    const { createUser, user, setUser, updateUserProfile, error, setError } = useContext(AuthContext);
+    const { createUser,  setUser, updateUserProfile, error, setError } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
