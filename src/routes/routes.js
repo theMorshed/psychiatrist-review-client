@@ -3,6 +3,7 @@ import Main from "../components/layout/Main";
 import Home from '../components/pages/Home';
 import Login from "../components/pages/Login";
 import Services from "../components/pages/Services";
+import SingleService from "../components/pages/SingleService";
 
 export const router = createBrowserRouter([
     {
@@ -16,6 +17,10 @@ export const router = createBrowserRouter([
             {
                 path: '/services',
                 element: <Services></Services>
+            },
+            {
+                path: '/service/:id',
+                element: <SingleService></SingleService>
             },
             {
                 path: '/login',
