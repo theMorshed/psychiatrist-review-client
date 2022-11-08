@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../components/layout/Main";
 import AddService from "../components/pages/AddService";
+import AllServices from "../components/pages/AllServices";
 import Home from '../components/pages/Home';
 import Login from "../components/pages/Login";
 import Reviews from "../components/pages/Reviews";
@@ -16,14 +17,17 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/',
+                loader: () => fetch('http://localhost:5000/services'),
                 element: <Home></Home>
             },
             {
                 path: '/services',
-                element: <Services></Services>
+                loader: () => fetch('http://localhost:5000/all-services'),
+                element: <AllServices></AllServices>
             },
             {
                 path: '/service/:id',
+                loader: ({ params }) => fetch(`http://localhost:5000/service/${params.id}`),
                 element: <SingleService></SingleService>
             },
             {
