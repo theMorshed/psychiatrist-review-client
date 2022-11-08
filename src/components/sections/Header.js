@@ -1,9 +1,23 @@
+import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
+
+    const {user} = useContext(AuthContext);
+    
     const menuItem = <>
         <li><NavLink className={({ isActive }) => isActive ? 'underline underline-offset-4' : undefined} to='/services'>Services</NavLink></li>
-        <li><NavLink className={({ isActive }) => isActive ? 'underline underline-offset-4' : undefined} to='/login'>Login</NavLink></li> 
+        {
+            user ?
+                <>
+                    <li><NavLink className={({ isActive }) => isActive ? 'underline underline-offset-4' : undefined} to='/reviews'>My Reviews</NavLink></li>
+                    <li><NavLink className={({ isActive }) => isActive ? 'underline underline-offset-4' : undefined} to='/service/add'>Add Service</NavLink></li>
+                    <li><NavLink className={({ isActive }) => isActive ? 'underline underline-offset-4' : undefined} to='/logout'>Logout</NavLink></li> 
+                </>
+                :
+                <li><NavLink className={({ isActive }) => isActive ? 'underline underline-offset-4' : undefined} to='/login'>Login</NavLink></li> 
+        }
     </>;
     return (
         <div>
