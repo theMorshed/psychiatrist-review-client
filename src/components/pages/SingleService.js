@@ -36,7 +36,7 @@ const SingleService = () => {
                             <input className='btn btn-primary mt-4' type="button" value="Add Review" />
                         </>
                     :
-                        <Link className='text-3xl font-semibold underline underline-offset-4' to='/login'>Please login to add a review.</Link>
+                        <Link className='text-3xl font-semibold underline underline-offset-4' to='/reviews'>Please login to add a review.</Link>
             }
             </div>
             <div className="reviews my-10">
@@ -44,7 +44,7 @@ const SingleService = () => {
                     <div className='flex'>
                         <div className="avatar">
                             <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                <img src="https://placeimg.com/192/192/people" />
+                                <img src="https://placeimg.com/192/192/people" alt="" />
                             </div>
                         </div>
                         <div className='ml-6'>
@@ -67,7 +67,7 @@ const SingleService = () => {
                     <div className='flex'>
                         <div className="avatar">
                             <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                <img src="https://placeimg.com/192/192/people" />
+                                <img src="https://placeimg.com/192/192/people" alt="" />
                             </div>
                         </div>
                         <div className='ml-6'>
@@ -90,7 +90,7 @@ const SingleService = () => {
                     <div className='flex'>
                         <div className="avatar">
                             <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                <img src="https://placeimg.com/192/192/people" />
+                                <img src="https://placeimg.com/192/192/people" alt="" />
                             </div>
                         </div>
                         <div className='ml-6'>

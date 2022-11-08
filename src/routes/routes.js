@@ -7,6 +7,7 @@ import Reviews from "../components/pages/Reviews";
 import Services from "../components/pages/Services";
 import Signup from "../components/pages/Signup";
 import SingleService from "../components/pages/SingleService";
+import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -35,11 +36,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/reviews',
-                element: <Reviews></Reviews>
+                element: <PrivateRoute><Reviews></Reviews></PrivateRoute>
             },
             {
                 path: '/service/add',
-                element: <AddService></AddService>
+                element: <PrivateRoute><AddService></AddService></PrivateRoute>
             }
         ]
     }

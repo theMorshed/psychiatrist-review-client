@@ -27,7 +27,6 @@ const Signup = () => {
                 setUser(result.user);
                 form.reset();
                 navigate(from, { replace: true });
-                window.location.reload();
             })
             .catch(err => {
                 setError(err.message);

@@ -1,10 +1,13 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
-    const { logIn, setUser, googleLogin } = useContext(AuthContext);
+    const { logIn, setUser, googleLogin, setError } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const handleLogin = (event) => {
         event.preventDefault();
@@ -17,10 +20,10 @@ const Login = () => {
                 const user = result.user;
                 setUser(user);
                 form.reset();
-                // navigate(from, { replace: true });
+                navigate(from, { replace: true });
             })
             .catch(err => {
-                // setError(err.message);
+                setError(err.message);
                 console.error(err);
             });
     }
@@ -30,14 +33,14 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 setUser(user);
-                // navigate(from, { replace: true });
+                navigate(from, { replace: true });
             })
             .catch(err => {
-                // setError(err.message);
+                setError(err.message);
             });
     }
 
-    
+
     return (
         <div className="hero py-16">
             <div className="hero-content flex-col lg:flex-row-reverse">
@@ -62,14 +65,14 @@ const Login = () => {
                                 <a href="/" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
                             <Link className="label-text-alt link link-hover ml-1" to='/register'>Don't have an account? Please register here.</Link>
-                        </div>                             
+                        </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Login</button>
                         </div>
-                    </form> 
+                    </form>
                     <div className='ml-8'>
                         <button onClick={handleGoogleLogin} className="btn btn-xs btn-primary btn-outline"><FaGoogle className="mr-2"></FaGoogle>Login with Google</button>
-                    </div>               
+                    </div>
                 </div>
             </div>
         </div>
