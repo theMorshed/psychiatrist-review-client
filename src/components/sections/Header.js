@@ -28,7 +28,7 @@ const Header = () => {
             <div className="navbar bg-base-100 py-6">
                 <div className="navbar-start">
                     <Link to='/' className="btn btn-ghost normal-case text-xl">
-                        <span>Psychologist</span>
+                        <span>Yahia Amin</span>
                     </Link>
                 </div>
                 <div className="navbar-end">

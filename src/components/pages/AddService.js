@@ -18,6 +18,12 @@ const AddService = () => {
             </div>
             <div className="form-control w-1/2">
                 <label className="label">
+                    <span className="label-text">Price</span>
+                </label>
+                <input type="number" name="price" placeholder="Service Price" className="input input-bordered input-primary" />
+            </div>
+            <div className="form-control w-1/2">
+                <label className="label">
                     <span className="label-text">Description</span>
                 </label>
                 <textarea className="textarea textarea-primary" placeholder="Service description write here.."></textarea>
