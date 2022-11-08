@@ -10,7 +10,7 @@ const Process = () => {
                 </figure>
                 <div className="card-body items-center text-center">
                     <h2 className="card-title">Primary Steps</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quod corporis consequatur repudiandae. Fugit, hic.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                 </div>
             </div>
             <div className="card items-center">
@@ -19,7 +19,7 @@ const Process = () => {
                 </figure>
                 <div className="card-body items-center text-center">
                     <h2 className="card-title">Primary Steps</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quod corporis consequatur repudiandae. Fugit, hic.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium </p>
                 </div>
             </div>
             <div className="card items-center">
@@ -28,7 +28,7 @@ const Process = () => {
                 </figure>
                 <div className="card-body items-center text-center">
                     <h2 className="card-title">Primary Steps</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quod corporis consequatur repudiandae. Fugit, hic.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quod </p>
                 </div>
             </div>
             <div className="card items-center">
@@ -37,7 +37,7 @@ const Process = () => {
                 </figure>
                 <div className="card-body items-center text-center">
                     <h2 className="card-title">Primary Steps</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quod corporis consequatur repudiandae. Fugit, hic.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quod corpo.</p>
                 </div>
             </div>
         </div>

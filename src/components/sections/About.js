@@ -2,10 +2,10 @@ import React from 'react';
 
 const About = () => {
     return (
-        <div className="hero">
-            <div className="hero-content flex-col lg:flex-row-reverse">
-                <div className="about-image w-1/2">
-                    <img src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=934&q=80" className="w-full rounded-lg shadow-2xl h-full" />
+        <div className="hero bg-base-200 py-8">
+            <div className="hero-content flex-col lg:flex-row-reverse justify-between">
+                <div>
+                    <img className='rounded rounded-full' src="https://lifespringcdn.s3.amazonaws.com/wp-content/uploads/2021/09/yahia-amin.jpg" alt='author' />
                 </div>
                 <div className='w-1/2'>
                     <h1 className="text-5xl font-bold">Box Office News!</h1>
