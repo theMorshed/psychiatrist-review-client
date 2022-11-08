@@ -12,7 +12,7 @@ const AddService = () => {
         const desc = form.description.value;
         const service = { name, photo, price, desc };
 
-        fetch('http://localhost:5000/service/add', {
+        fetch('https://psychologist-server.vercel.app/service/add', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

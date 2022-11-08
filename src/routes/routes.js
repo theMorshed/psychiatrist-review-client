@@ -17,17 +17,17 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                loader: () => fetch('http://localhost:5000/services'),
+                loader: () => fetch('https://psychologist-server.vercel.app/services'),
                 element: <Home></Home>
             },
             {
                 path: '/services',
-                loader: () => fetch('http://localhost:5000/all-services'),
+                loader: () => fetch('https://psychologist-server.vercel.app/all-services'),
                 element: <AllServices></AllServices>
             },
             {
                 path: '/service/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/service/${params.id}`),
+                loader: ({ params }) => fetch(`https://psychologist-server.vercel.app/service/${params.id}`),
                 element: <SingleService></SingleService>
             },
             {

@@ -1,12 +1,47 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLoaderData, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import Review from '../sections/Review';
 
 const SingleService = () => {
     const { user } = useContext(AuthContext);
     const location = useLocation();
     const service = useLoaderData();
     const { _id, name, price, photo, desc } = service;
+    const [reviews, setReviews] = useState([]);
+
+    const handleAddReview = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const review_text = form.review.value;
+        const email = user?.email;
+        const user_name = user?.displayName;
+        const service_name = name;
+        const service_id = _id;
+        const user_photo = user?.photoURL;
+        const review = { user_name, user_photo, email, service_id, service_name, review_text };
+
+        fetch('https://psychologist-server.vercel.app/review/add', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(review)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    form.reset();
+                }
+            })
+    }
+
+    useEffect(() => {
+        const url = `http://localhost:5000/review/${_id}`;
+        fetch(url)
+            .then(res => res.json())
+            .then(data => setReviews(data))
+    }, [_id]);
 
     return (
         <div>
@@ -16,6 +51,7 @@ const SingleService = () => {
                     <div className="text-gray-200">
                         <h1 className="mb-5 text-5xl font-bold">{name}</h1>
                         <p className="mb-5 text-xl">{desc}</p>
+                        <p className='text-2xl font-normal text-primary'>Price: ${price}</p>
                     </div>
                 </div>
             </div>
@@ -24,94 +60,33 @@ const SingleService = () => {
                     user ?
                         <>
                             <h2 className='text-3xl font-semibold'>Please add a review.</h2>
-                            <div className="form-control w-1/2">
-                                <label className="label">
-                                    <span className="label-text">Email</span>
-                                </label>
-                                <input type="text" name="email" placeholder="email" className="input input-bordered input-primary" />
-                            </div>
-                            <div className="form-control w-1/2">
-                                <label className="label">
-                                    <span className="label-text">Review</span>
-                                </label>
-                                <textarea className="textarea textarea-primary" placeholder="Add Review here"></textarea>
-                            </div>
-                            <input className='btn btn-primary mt-4' type="button" value="Add Review" />
+                            <form onSubmit={handleAddReview}>
+                                <div className="form-control w-1/2">
+                                    <label className="label">
+                                        <span className="label-text">Email</span>
+                                    </label>
+                                    <input type="text" defaultValue={user?.email} name="email" placeholder="email" className="input input-bordered input-primary" readOnly />
+                                </div>
+                                <div className="form-control w-1/2">
+                                    <label className="label">
+                                        <span className="label-text">Review</span>
+                                    </label>
+                                    <textarea name="review" className="textarea textarea-primary" placeholder="Add Review here"></textarea>
+                                </div>
+                                <input className='btn btn-primary mt-4' type="submit" value="Add Review" />
+                            </form>
                         </>
                         :
                         <Link className='text-3xl font-semibold underline underline-offset-4' to='/login' state={{ from: location }}>Please login to add a review.</Link>
                 }
             </div>
             <div className="reviews my-10">
-                <div className="single-review mb-8">
-                    <div className='flex'>
-                        <div className="avatar">
-                            <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                <img src="https://placeimg.com/192/192/people" alt="" />
-                            </div>
-                        </div>
-                        <div className='ml-6'>
-                            <h3 className='text-xl font-semibold text-gray-500'>Manjur Morshed</h3>
-                            <div className="rating my-2">
-                                <input type="radio" name="rating-4" className="mask mask-star-2 bg-primary" />
-                                <input type="radio" name="rating-4" className="mask mask-star-2 bg-primary" />
-                                <input type="radio" name="rating-4" className="mask mask-star-2 bg-primary" />
-                                <input type="radio" name="rating-4" className="mask mask-star-2 bg-primary" />
-                                <input type="radio" name="rating-4" className="mask mask-star-2 bg-primary" />
-                            </div>
-                            <p>1 week ago</p>
-                        </div>
-                    </div>
-                    <div className='mt-3'>
-                        <p>The course is good no doubt, the pace is fabulous as well. However it'll be nice if the content is updated as per the recent changes especially with regards to the the lectures..The course is good no doubt, the pace is fabulous as well. However it'll be nice if the content is updated as per the recent changes especially with regards to the the lectures..The course is good no doubt, the pace is fabulous as well. However it'll be nice if the content is updated as per the recent changes especially with regards to the the lectures..</p>
-                    </div>
-                </div>
-                <div className="single-review mb-8">
-                    <div className='flex'>
-                        <div className="avatar">
-                            <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                <img src="https://placeimg.com/192/192/people" alt="" />
-                            </div>
-                        </div>
-                        <div className='ml-6'>
-                            <h3 className='text-xl font-semibold text-gray-500'>Manjur Morshed</h3>
-                            <div className="rating my-2">
-                                <input type="radio" name="rating-4" className="mask mask-star-2 bg-primary" />
-                                <input type="radio" name="rating-4" className="mask mask-star-2 bg-primary" />
-                                <input type="radio" name="rating-4" className="mask mask-star-2 bg-primary" />
-                                <input type="radio" name="rating-4" className="mask mask-star-2 bg-primary" />
-                                <input type="radio" name="rating-4" className="mask mask-star-2 bg-primary" />
-                            </div>
-                            <p>1 week ago</p>
-                        </div>
-                    </div>
-                    <div className='mt-3'>
-                        <p>The course is good no doubt, the pace is fabulous as well. However it'll be nice if the content is updated as per the recent changes especially with regards to the the lectures..The course is good no doubt, the pace is fabulous as well. However it'll be nice if the content is updated as per the recent changes especially with regards to the the lectures..The course is good no doubt, the pace is fabulous as well. However it'll be nice if the content is updated as per the recent changes especially with regards to the the lectures..</p>
-                    </div>
-                </div>
-                <div className="single-review mb-8">
-                    <div className='flex'>
-                        <div className="avatar">
-                            <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                                <img src="https://placeimg.com/192/192/people" alt="" />
-                            </div>
-                        </div>
-                        <div className='ml-6'>
-                            <h3 className='text-xl font-semibold text-gray-500'>Manjur Morshed</h3>
-                            <div className="rating my-2">
-                                <input type="radio" name="rating-4" className="mask mask-star-2 bg-primary" />
-                                <input type="radio" name="rating-4" className="mask mask-star-2 bg-primary" />
-                                <input type="radio" name="rating-4" className="mask mask-star-2 bg-primary" />
-                                <input type="radio" name="rating-4" className="mask mask-star-2 bg-primary" />
-                                <input type="radio" name="rating-4" className="mask mask-star-2 bg-primary" />
-                            </div>
-                            <p>1 week ago</p>
-                        </div>
-                    </div>
-                    <div className='mt-3'>
-                        <p>The course is good no doubt, the pace is fabulous as well. However it'll be nice if the content is updated as per the recent changes especially with regards to the the lectures..The course is good no doubt, the pace is fabulous as well. However it'll be nice if the content is updated as per the recent changes especially with regards to the the lectures..The course is good no doubt, the pace is fabulous as well. However it'll be nice if the content is updated as per the recent changes especially with regards to the the lectures..</p>
-                    </div>
-                </div>
+                {
+                    reviews.map(review => <Review
+                        key={review._id}
+                        review={review}
+                    ></Review>)
+                }                
             </div>
         </div>
     );
