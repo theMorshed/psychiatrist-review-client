@@ -4,8 +4,12 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
 
-    const {user} = useContext(AuthContext);
-    
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogout = () => {
+        logOut();
+    }
+
     const menuItem = <>
         <li><NavLink className={({ isActive }) => isActive ? 'underline underline-offset-4' : undefined} to='/services'>Services</NavLink></li>
         {
@@ -13,10 +17,10 @@ const Header = () => {
                 <>
                     <li><NavLink className={({ isActive }) => isActive ? 'underline underline-offset-4' : undefined} to='/reviews'>My Reviews</NavLink></li>
                     <li><NavLink className={({ isActive }) => isActive ? 'underline underline-offset-4' : undefined} to='/service/add'>Add Service</NavLink></li>
-                    <li><NavLink className={({ isActive }) => isActive ? 'underline underline-offset-4' : undefined} to='/logout'>Logout</NavLink></li> 
+                    <li><NavLink onClick={handleLogout} className={({ isActive }) => isActive ? 'underline underline-offset-4' : undefined} to='/'>Logout</NavLink></li>
                 </>
                 :
-                <li><NavLink className={({ isActive }) => isActive ? 'underline underline-offset-4' : undefined} to='/login'>Login</NavLink></li> 
+                <li><NavLink className={({ isActive }) => isActive ? 'underline underline-offset-4' : undefined} to='/login'>Login</NavLink></li>
         }
     </>;
     return (
@@ -38,9 +42,9 @@ const Header = () => {
                     </div>
                     <div className='hidden lg:flex'>
                         <ul className="menu menu-horizontal p-0">
-                            {menuItem}                          
+                            {menuItem}
                         </ul>
-                    </div>                    
+                    </div>
                 </div>
             </div>
         </div>
