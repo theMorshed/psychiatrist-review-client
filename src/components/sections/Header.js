@@ -1,10 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Header = () => {
     const menuItem = <>
-        <li><Link className={({ isActive }) => isActive ? 'underline underline-offset-4' : undefined} to='/services'>Services</Link></li>
-        <li><Link className={({ isActive }) => isActive ? 'underline underline-offset-4' : undefined} to='/login'>Login</Link></li> 
+        <li><NavLink className={({ isActive }) => isActive ? 'underline underline-offset-4' : undefined} to='/services'>Services</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? 'underline underline-offset-4' : undefined} to='/login'>Login</NavLink></li> 
     </>;
     return (
         <div>
