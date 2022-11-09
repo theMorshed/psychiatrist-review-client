@@ -5,9 +5,9 @@ import UserReview from '../sections/UserReview';
 const Reviews = () => {
     const reviews = useLoaderData();
     const [updateReviews, setUpdateReviews] = useState(reviews);
+
     const handleDelete = id => {
         const confirm = window.confirm('Are you sure to delete this item?');
-        console.log(id, confirm);
         if (confirm) {
             fetch(`https://psychologist-server.vercel.app/reviews/${id}`, {
                 method: 'DELETE'
@@ -25,26 +25,14 @@ const Reviews = () => {
 
     return (
         <div className="reviews my-10">
-            <div className="overflow-x-auto">
-                <table className="table w-full">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Review</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            updateReviews.map(review => <UserReview
-                                key={review._id}
-                                review={review}
-                                handleDelete={handleDelete}
-                            ></UserReview>)
-                        }
-                    </tbody>
-                </table>
+            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 py-12'>
+                {
+                    updateReviews.map(review => <UserReview
+                        key={review._id}
+                        review={review}
+                        handleDelete={handleDelete}
+                    ></UserReview>)
+                }
             </div>
         </div>
     );

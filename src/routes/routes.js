@@ -8,6 +8,7 @@ import Login from "../components/pages/Login";
 import Reviews from "../components/pages/Reviews";
 import Signup from "../components/pages/Signup";
 import SingleService from "../components/pages/SingleService";
+import UpdateReview from "../components/pages/UpdateReview";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
@@ -42,6 +43,11 @@ export const router = createBrowserRouter([
                 path: '/reviews/:email',
                 loader: ({ params }) => fetch(`https://psychologist-server.vercel.app/reviews/${params.email}`),
                 element: <PrivateRoute><Reviews></Reviews></PrivateRoute>
+            },
+            {
+                path: '/update/:id',
+                loader: ({ params }) => fetch(`https://psychologist-server.vercel.app/single-review/${params.id}`),
+                element: <UpdateReview></UpdateReview>
             },
             {
                 path: '/service/add',
