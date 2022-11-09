@@ -37,7 +37,7 @@ const SingleService = () => {
     }
 
     useEffect(() => {
-        const url = `http://localhost:5000/review/${_id}`;
+        const url = `https://psychologist-server.vercel.app/review/${_id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setReviews(data))
@@ -86,7 +86,7 @@ const SingleService = () => {
                         key={review._id}
                         review={review}
                     ></Review>)
-                }                
+                }
             </div>
         </div>
     );

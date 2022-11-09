@@ -15,7 +15,7 @@ const Header = () => {
         {
             user ?
                 <>
-                    <li><NavLink className={({ isActive }) => isActive ? 'underline underline-offset-4' : undefined} to='/reviews'>My Reviews</NavLink></li>
+                    <li><NavLink className={({ isActive }) => isActive ? 'underline underline-offset-4' : undefined} to={`/reviews/${user?.email}`}>My Reviews</NavLink></li>
                     <li><NavLink className={({ isActive }) => isActive ? 'underline underline-offset-4' : undefined} to='/service/add'>Add Service</NavLink></li>
                     <li><NavLink onClick={handleLogout} className={({ isActive }) => isActive ? 'underline underline-offset-4' : undefined} to='/'>Logout</NavLink></li>
                 </>
