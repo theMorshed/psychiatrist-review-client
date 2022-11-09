@@ -1,12 +1,28 @@
-import React, { useContext } from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import UserReview from '../sections/UserReview';
 
 const Reviews = () => {
-    const { user } = useContext(AuthContext);
     const reviews = useLoaderData();
-    
+    const [updateReviews, setUpdateReviews] = useState(reviews);
+    const handleDelete = id => {
+        const confirm = window.confirm('Are you sure to delete this item?');
+        console.log(id, confirm);
+        if (confirm) {
+            fetch(`https://psychologist-server.vercel.app/reviews/${id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        alert('deleted successfully');
+                        const remainingReviews = updateReviews.filter(review => review._id !== id);
+                        setUpdateReviews(remainingReviews);
+                    }
+                })
+        }
+    }
+
     return (
         <div className="reviews my-10">
             <div className="overflow-x-auto">
@@ -21,14 +37,15 @@ const Reviews = () => {
                     </thead>
                     <tbody>
                         {
-                            reviews.map(review => <UserReview
+                            updateReviews.map(review => <UserReview
                                 key={review._id}
                                 review={review}
+                                handleDelete={handleDelete}
                             ></UserReview>)
-                        }                        
+                        }
                     </tbody>
                 </table>
-            </div>            
+            </div>
         </div>
     );
 };
