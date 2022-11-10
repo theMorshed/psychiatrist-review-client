@@ -40,7 +40,7 @@ const AuthProvider = ({ children }) => {
     }
 
     const logOut = () => {
-        localStorage.removeItem('jwt-token');
+        localStorage.removeItem('psychologist-token');
         return signOut(auth);
     }
 

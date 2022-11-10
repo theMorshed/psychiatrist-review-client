@@ -5,24 +5,19 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import UserReview from '../sections/UserReview';
 
 const Reviews = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const [reviews, setReviews] = useState(null);
     const [updateReviews, setUpdateReviews] = useState(reviews);
 
     useEffect(() => {
         fetch(`https://psychologist-server.vercel.app/reviews/${user.email}`, {
             headers: {
-                authorization: `Bearer ${localStorage.getItem('jwt-token')}`
+                authorization: `Bearer ${localStorage.getItem('psychologist-token')}`
             }
         })
-            .then(res => {
-                if (res.status === 401 || res.status === 403) {
-                    return logOut();
-                }
-                return res.json();
-            })
+            .then(res => res.json())
             .then(data => setReviews(data))
-    }, [updateReviews, user?.email, logOut]);
+    }, [updateReviews, user.email]);
 
     const handleDelete = id => {
         const confirm = window.confirm('Are you sure to delete this item?');

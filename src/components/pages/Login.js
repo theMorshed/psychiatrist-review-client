@@ -25,6 +25,7 @@ const Login = () => {
                 const currentUser = {
                     email: user.email
                 }
+
                 // get jwt token
                 fetch('https://psychologist-server.vercel.app/jwt', {
                     method: 'POST',
@@ -34,13 +35,14 @@ const Login = () => {
                     body: JSON.stringify(currentUser)
                 })
                     .then(res => res.json())
-                    .then(data => {
-                        localStorage.setItem('jwt-token', data.token);
+                    .then(data => {  
+                        console.log(data);                                              
+                        localStorage.setItem('psychologist-token', data.token);
                         setUser(user);
                         form.reset();
                         setSpinner(false);
                         navigate(from, { replace: true });
-                    });
+                    });                
             })
             .catch(err => {
                 setError(err.message);
