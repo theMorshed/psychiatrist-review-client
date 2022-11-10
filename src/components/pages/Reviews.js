@@ -1,12 +1,28 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import toast, { Toaster } from 'react-hot-toast';
-import { useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import UserReview from '../sections/UserReview';
 
 const Reviews = () => {
-    const reviews = useLoaderData();
+    const { user, logOut } = useContext(AuthContext);
+    const [reviews, setReviews] = useState(null);
     const [updateReviews, setUpdateReviews] = useState(reviews);
+
+    useEffect(() => {
+        fetch(`https://psychologist-server.vercel.app/reviews/${user.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('jwt-token')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    return logOut();
+                }
+                return res.json();
+            })
+            .then(data => setReviews(data))
+    }, [updateReviews, user?.email, logOut]);
 
     const handleDelete = id => {
         const confirm = window.confirm('Are you sure to delete this item?');
@@ -18,7 +34,7 @@ const Reviews = () => {
                 .then(data => {
                     if (data.deletedCount > 0) {
                         toast.success('Review deleted successfully');
-                        const remainingReviews = updateReviews.filter(review => review._id !== id);
+                        const remainingReviews = updateReviews?.filter(review => review._id !== id);
                         setUpdateReviews(remainingReviews);
                     }
                 })
@@ -30,9 +46,9 @@ const Reviews = () => {
             <Helmet>
                 <title>Reviews</title>
             </Helmet>
-            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 py-12'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 py-12'>
                 {
-                    updateReviews.map(review => <UserReview
+                    reviews?.map(review => <UserReview
                         key={review._id}
                         review={review}
                         handleDelete={handleDelete}

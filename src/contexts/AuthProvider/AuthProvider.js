@@ -10,6 +10,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const [spinner, setSpinner] = useState(false);
 
     const logIn = (email, password) => {
         setLoading(true);
@@ -39,6 +40,7 @@ const AuthProvider = ({ children }) => {
     }
 
     const logOut = () => {
+        localStorage.removeItem('jwt-token');
         return signOut(auth);
     }
 
@@ -53,7 +55,9 @@ const AuthProvider = ({ children }) => {
         error,
         setError,
         loading,
-        setLoading
+        setLoading,
+        spinner,
+        setSpinner
     }
 
     return (

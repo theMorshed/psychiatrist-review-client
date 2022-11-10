@@ -46,7 +46,6 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/reviews/:email',
-                loader: ({ params }) => fetch(`https://psychologist-server.vercel.app/reviews/${params.email}`),
                 element: <PrivateRoute><Reviews></Reviews></PrivateRoute>
             },
             {

@@ -33,13 +33,13 @@ const UpdateReview = () => {
                 <title>Update</title>
             </Helmet>
             <h2 className='text-3xl font-semibold'>Update Review</h2>
-            <div className="form-control w-1/2">
+            <div className="form-control w-10/12 lg:w-1/2">
                 <label className="label">
                     <span className="label-text">Service Name</span>
                 </label>
                 <input defaultValue={review.service_name} type="text" name="name" placeholder="Service name" className="input input-bordered input-primary" readOnly />
             </div>
-            <div className="form-control w-1/2">
+            <div className="form-control w-10/12 lg:w-1/2">
                 <label className="label">
                     <span className="label-text">Review</span>
                 </label>

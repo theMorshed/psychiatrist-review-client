@@ -68,13 +68,13 @@ const SingleService = () => {
                         <>
                             <h2 className='text-3xl font-semibold'>Please add a review.</h2>
                             <form onSubmit={handleAddReview}>
-                                <div className="form-control w-1/2">
+                                <div className="form-control w-10/12 lg:w-1/2">
                                     <label className="label">
                                         <span className="label-text">Email</span>
                                     </label>
                                     <input type="text" defaultValue={user?.email} name="email" placeholder="email" className="input input-bordered input-primary" readOnly />
                                 </div>
-                                <div className="form-control w-1/2">
+                                <div className="form-control w-10/12 lg:w-1/2">
                                     <label className="label">
                                         <span className="label-text">Review</span>
                                     </label>
