@@ -1,7 +1,10 @@
 import React from 'react';
+import toast, { Toaster } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import Banner from '../sections/Banner';
 
 const AddService = () => {
+    const navigate = useNavigate();
 
     const handleAddService = (event) => {
         event.preventDefault();
@@ -23,6 +26,8 @@ const AddService = () => {
             .then(data => {
                 if (data.acknowledged) {
                     form.reset();
+                    toast.success('New service added successfully');
+                    navigate('/services');
                 }
             })
     }
@@ -58,6 +63,7 @@ const AddService = () => {
                 </div>
                 <input className='btn btn-primary mt-4' type="submit" value="Add New Service" />
             </form>
+            <Toaster></Toaster>
         </div>
     );
 };

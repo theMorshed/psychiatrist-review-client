@@ -12,6 +12,7 @@ const Header = () => {
 
     const menuItem = <>
         <li><NavLink className={({ isActive }) => isActive ? 'underline underline-offset-4' : undefined} to='/services'>Services</NavLink></li>
+        <li><NavLink className={({ isActive }) => isActive ? 'underline underline-offset-4' : undefined} to='/blog'>Blog</NavLink></li>
         {
             user ?
                 <>

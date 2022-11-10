@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../components/layout/Main";
 import AddService from "../components/pages/AddService";
 import AllServices from "../components/pages/AllServices";
+import Blog from "../components/pages/Blog";
 import ErrorPage from "../components/pages/ErrorPage";
 import Home from '../components/pages/Home';
 import Login from "../components/pages/Login";
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
                 path: '/',
                 loader: () => fetch('https://psychologist-server.vercel.app/services'),
                 element: <Home></Home>
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
             },
             {
                 path: '/services',

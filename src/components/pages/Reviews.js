@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 import UserReview from '../sections/UserReview';
 
@@ -15,7 +16,7 @@ const Reviews = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
-                        alert('deleted successfully');
+                        toast.success('Review deleted successfully');
                         const remainingReviews = updateReviews.filter(review => review._id !== id);
                         setUpdateReviews(remainingReviews);
                     }
@@ -34,6 +35,7 @@ const Reviews = () => {
                     ></UserReview>)
                 }
             </div>
+            <Toaster></Toaster>
         </div>
     );
 };

@@ -55,6 +55,9 @@ const SingleService = () => {
                     </div>
                 </div>
             </div>
+            {
+                !(reviews.length > 0) && <h2 className='text-5xl mt-10 font-semibold text-center'>No reviews were added</h2>
+            }
             <div className="add-review mt-10">
                 {
                     user ?
@@ -80,7 +83,7 @@ const SingleService = () => {
                         <Link className='text-3xl font-semibold underline underline-offset-4' to='/login' state={{ from: location }}>Please login to add a review.</Link>
                 }
             </div>
-            <div className="reviews my-10">
+            <div className="reviews my-10">               
                 {
                     reviews.map(review => <Review
                         key={review._id}
