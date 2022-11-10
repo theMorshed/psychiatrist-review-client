@@ -41,13 +41,18 @@ const Reviews = () => {
             <Helmet>
                 <title>Reviews</title>
             </Helmet>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 py-12'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 py-12'>                
                 {
-                    reviews?.map(review => <UserReview
-                        key={review._id}
-                        review={review}
-                        handleDelete={handleDelete}
-                    ></UserReview>)
+                    reviews !== null ?
+                        reviews?.map(review => <UserReview
+                            key={review._id}
+                            review={review}
+                            handleDelete={handleDelete}
+                        ></UserReview>)
+                        :
+                        <div>
+                            <h2>There is no review here.</h2>
+                        </div>
                 }
             </div>
             <Toaster></Toaster>
