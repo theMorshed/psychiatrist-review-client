@@ -33,6 +33,7 @@ const SingleService = () => {
             .then(data => {
                 if (data.acknowledged) {
                     form.reset();
+                    window.location.reload();                    
                 }
             })
     }

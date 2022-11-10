@@ -8,6 +8,7 @@ const Reviews = () => {
     const { user } = useContext(AuthContext);
     const [reviews, setReviews] = useState(null);
     const [updateReviews, setUpdateReviews] = useState(reviews);
+    const [empty, setEmpty] = useState(false);
 
     useEffect(() => {
         fetch(`https://psychologist-server.vercel.app/reviews/${user.email}`, {
@@ -16,8 +17,15 @@ const Reviews = () => {
             }
         })
             .then(res => res.json())
-            .then(data => setReviews(data))
+            .then(data => {
+                setReviews(data);
+                if(data.length === 0) {
+                    setEmpty(true);
+                }
+            })
     }, [updateReviews, user.email]);
+
+    console.log(empty);
 
     const handleDelete = id => {
         const confirm = window.confirm('Are you sure to delete this item?');
@@ -36,23 +44,23 @@ const Reviews = () => {
         }
     }
 
+
     return (
         <div className="reviews my-10">
             <Helmet>
                 <title>Reviews</title>
             </Helmet>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 py-12'>                
+                {                    
+                    reviews?.map(review => <UserReview
+                        key={review._id}
+                        review={review}
+                        handleDelete={handleDelete}
+                    ></UserReview>)                                        
+                }
                 {
-                    reviews !== null ?
-                        reviews?.map(review => <UserReview
-                            key={review._id}
-                            review={review}
-                            handleDelete={handleDelete}
-                        ></UserReview>)
-                        :
-                        <div>
-                            <h2>There is no review here.</h2>
-                        </div>
+                    empty && 
+                        <h3 className='text-center text-red-700 text-2xl font-semibold'>There is no review. Please add a review..</h3>
                 }
             </div>
             <Toaster></Toaster>

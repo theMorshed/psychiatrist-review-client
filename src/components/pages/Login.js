@@ -55,9 +55,27 @@ const Login = () => {
         googleLogin()
             .then(result => {
                 const user = result.user;
-                setUser(user);
-                setSpinner(false);
-                navigate(from, { replace: true });
+
+                const currentUser = {
+                    email: user.email
+                }
+
+                // get jwt token
+                fetch('https://psychologist-server.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        localStorage.setItem('psychologist-token', data.token);
+                        setUser(user);
+                        setSpinner(false);
+                        navigate(from, { replace: true });
+                    });                 
             })
             .catch(err => {
                 setError(err.message);
@@ -73,7 +91,7 @@ const Login = () => {
             </Helmet>
             {
                 spinner &&
-                <div id="progress-bar" className="spinner flex justify-center">
+                <div id="progress-bar" className="spinner flex justify-center z-10">
                     <div role="status">
                         <svg aria-hidden="true"
                             className="mr-2 w-20 h-20 text-gray-200 animate-spin dark:text-gray-600 fill-blue-700"
