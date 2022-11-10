@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import Banner from '../sections/Banner';
@@ -34,6 +35,9 @@ const AddService = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Add Service</title>
+            </Helmet>
             <Banner></Banner>
             <form onSubmit={handleAddService} className='my-10'>
                 <h2 className='text-3xl font-semibold'>Add a service</h2>

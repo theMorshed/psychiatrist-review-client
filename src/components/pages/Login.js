@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { FaGoogle } from "react-icons/fa";
+import { Helmet } from 'react-helmet';
 
 const Login = () => {
     const { logIn, setUser, googleLogin, setError } = useContext(AuthContext);
@@ -43,6 +44,9 @@ const Login = () => {
 
     return (
         <div className="hero py-16">
+            <Helmet>
+                <title>Login</title>
+            </Helmet>
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left ml-10">
                     <h1 className="text-5xl font-bold">Login now!</h1>

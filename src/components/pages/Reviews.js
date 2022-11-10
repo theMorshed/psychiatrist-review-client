@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import toast, { Toaster } from 'react-hot-toast';
 import { useLoaderData } from 'react-router-dom';
 import UserReview from '../sections/UserReview';
@@ -26,6 +27,9 @@ const Reviews = () => {
 
     return (
         <div className="reviews my-10">
+            <Helmet>
+                <title>Reviews</title>
+            </Helmet>
             <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 py-12'>
                 {
                     updateReviews.map(review => <UserReview

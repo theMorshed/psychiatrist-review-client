@@ -4,12 +4,16 @@ import Services from './Services';
 import Banner from '../sections/Banner';
 import Process from '../sections/Process';
 import { useLoaderData } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const Home = () => {
     const services = useLoaderData();
     
     return (
         <div>
+            <Helmet>
+                <title>Home</title>
+            </Helmet>
             <Banner></Banner>
             <Services services={services}></Services>
             <About></About>

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { Link, useLoaderData, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import Review from '../sections/Review';
@@ -45,6 +46,9 @@ const SingleService = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Single Service</title>
+            </Helmet>
             <div className="hero min-h-[600px]" style={{ backgroundImage: `url("${photo}")` }}>
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero-content text-center text-neutral-content">

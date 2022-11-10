@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 
 const UpdateReview = () => {
@@ -28,6 +29,9 @@ const UpdateReview = () => {
 
     return (
         <form onSubmit={handleUpdate} className='my-10'>
+            <Helmet>
+                <title>Update</title>
+            </Helmet>
             <h2 className='text-3xl font-semibold'>Update Review</h2>
             <div className="form-control w-1/2">
                 <label className="label">

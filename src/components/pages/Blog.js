@@ -1,36 +1,37 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import Banner from '../sections/Banner';
 
 const Blog = () => {
     return (
         <div className='w-full py-10'>
+            <Helmet>
+                <title>Blog</title>
+            </Helmet>
             <Banner></Banner>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10'>
                 <div className="card w-full bg-base-100 shadow-xl">
                     <div className="card-body px-5">
-                        <h2 className="card-title">What is cors?</h2>
-                        <p>Cross-origin resource sharing (CORS) is a browser mechanism which enables controlled access to resources located outside of a given domain. It extends and adds flexibility to the same-origin policy (SOP). However, it also provides potential for cross-domain attacks, if a website's CORS policy is poorly configured and implemented. CORS is not a protection against cross-origin attacks such as cross-site request forgery (CSRF).</p>
+                        <h2 className="card-title">Difference Between SQL and NOSQL</h2>
+                        <p>SQL is the programming language used to interface with relational databases. (Relational databases model data as records in rows and tables with logical links between them). NoSQL is a class of DBMs that are non-relational and generally do not use SQL.There are five practical differences between SQL and NoSQL: 1. Language, 2. Scalability, 3.Structure, 4. Properties,5. Support and communities</p>
                     </div>
                 </div>
                 <div className="card w-full bg-base-100 shadow-xl">
                     <div className="card-body px-5">
-                        <h2 className="card-title">Why are you using firebase? What other options do you have to implement authentication?</h2>
-                        <p>Because Firebase gives Website developers access to a complete range of fully managed mobile-centric services including analytics, authentication and Realtime Database. Cloud Functions rounds out the offering by providing a way to extend and connect the behavior of Firebase features through the addition of server-side code.</p>
-                        <p>There are a lot of option instead of firebase these are: Back4App, Backendless, Kuzzle,Appwrite,Deployd,NHost,AWS Amplify, Heroku and so on.</p>
+                        <h2 className="card-title">What is JWT and how does it works?</h2>
+                        <p>JSON Web Token (JWT) is an open standard (RFC 7519) for securely transmitting information between parties as JSON object. It is compact, readable and digitally signed using a private key/ or a public key pair by the Identity Provider(IdP). So the integrity and authenticity of the token can be verified by other parties involved. The purpose of using JWT is not to hide data but to ensure the authenticity of the data. JWT is signed and encoded, not encrypted. JWT is a token based stateless authentication mechanism. Since it is a client-side based stateless session, server doesn't have to completely rely on a datastore(database) to save session information.</p>
                     </div>
                 </div>
                 <div className="card w-full bg-base-100 shadow-xl">
                     <div className="card-body px-5">
-                        <h2 className="card-title">How does the private route work?</h2>
-                        <p>The private route component is similar to the public route, the only change is that redirect URL and authenticate condition. If the user is not authenticated he will be redirected to the login page and the user can only access the authenticated routes If he is authenticated (Logged in).</p>
+                        <h2 className="card-title">Difference between NodeJS and Javascript</h2>
+                        <p>1. NodeJS : NodeJS is a cross-platform and opensource Javascript runtime environment that allows the javascript to be run on the server-side. Nodejs allows Javascript code to run outside the browser. Nodejs comes with a lot of modules and mostly used in web development. 2. JavaScript : Javascript is a Scripting language. It is mostly abbreviated as JS. It can be said that Javascript is the updated version of the ECMA script. Javascript is a high-level programming language that uses the concept of Oops but it is based on prototype inheritance. </p>
                     </div>
                 </div>
                 <div className="card w-full bg-base-100 shadow-xl">
                     <div className="card-body px-5">
-                        <h2 className="card-title">What is Node? How does Node work?</h2>
-                        <p>Node. js is a JavaScript runtime environment that achieves low latency and high throughput by taking a “non-blocking” approach to serving requests. In other words, Node. js wastes no time or resources on waiting for I/O requests to return.</p>
-                        <p>Node.js accepts the request from the clients and sends the response, while working with the request node.js handles them with a single thread. To operate I/O operations or requests node.js use the concept of threads. Thread is a sequence of instructions that the server needs to perform. It runs parallel on the server to provide the information to multiple clients. Node.js is an event loop single-threaded language. It can handle concurrent requests with a single thread without blocking it for one request.
-                            Node.js basically works on two concept: Asynchronous, Non-blocking I/O</p>
+                        <h2 className="card-title">How does nodejs handle multiple requests at the same time?</h2>
+                        <p>NodeJS receives multiple client requests and places them into EventQueue. NodeJS is built with the concept of event-driven architecture. NodeJS has its own EventLoop which is an infinite loop that receives requests and processes them. EventLoop is the listener for the EventQueue. </p>
                     </div>
                 </div>
             </div>
